@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <input type="text" v-model="num" placeholder="请输入名字"><br>
+    <button   @click="incrs()">点我呀</button><br>
+    <input type="button"  value="点伙呀"><br>
+    你好,我叫<span v-html="name"> c</span>,有{{num}}美女
+
+</div>
+<div id="a">
+    <input type="button" @click="sfdf" value="344" >
+   <h1> 你好,我叫{{user}},有{{bb}}美女</h1>
+    <a herf="www.baidu.com">hhh</a>
+
+</div>
+
+
+</body>
+<script src="node_modules\vue\dist\vue.js"></script>
+
+<script>
+
+    const  app= new Vue({
+        el:"#app",
+        data(){
+            return{
+                name: "<span style=' color:red;'>q</span>",
+                num :10
+            }
+        },
+        methods:{
+            incrs(){
+                 this.num++;
+            }
+
+        },
+
+       created(){
+            this.num=646;
+       }
+          })
+
+    const  user = new Vue({
+        el:"#a",
+        data:{
+            user:"第三方的",
+            bb:12,
+            url:""
+        },
+        methods: {
+            sfdf(){
+                this.bb++;
+            },
+            ss(){
+                this.url="www.baidu.com"
+            }
+        }
+    })
+</script>
+</html>

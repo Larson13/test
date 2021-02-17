@@ -1,0 +1,32 @@
+<!-- monitorInterval="1800" 指log4j2每隔1800秒（半小时），自动监控该配置文件是否有变化，如果变化，则自动根据文件内容重新配置 -->
+<configuration status="INFO" monitorInterval="1800">
+  <appenders>
+    <!--控制台打印 -->
+    <Console name="CONSOLE" target="SYSTEM_OUT">
+      <PatternLayout
+              pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight{%-5p} => %m%n"/>
+    </Console>
+    <!--当日志内容达到指定范围后，以某种定义规则打包日志文件 -->
+    <RollingFile name="RollingFile" fileName="/home/logs/ptp.log"
+                 filePattern="/home/logs/ptp-%d{yyyy-MM-dd}-%i.log.gz">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight{%-5p} => %m%n"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy/>
+        <!--当日志大小达到50MB时，以上述filePattern定义的格式进行打包压缩 -->
+        <SizeBasedTriggeringPolicy size="50MB"/>
+      </Policies>
+      <!--压缩包数量不超过20-->
+      <DefaultRolloverStrategy max="20"/>
+    </RollingFile>
+    <!-- 异步输出文件 -->
+    <Async name="Async">
+      <AppenderRef ref="RollingFile"/>
+    </Async>
+  </appenders>
+  <loggers>
+    <root level="info">
+      <appender-ref ref="CONSOLE"/>
+      <appender-ref ref="Async"/>
+    </root>
+  </loggers>
+</configuration>

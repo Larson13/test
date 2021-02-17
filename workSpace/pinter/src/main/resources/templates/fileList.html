@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+
+    <title>文件下载练习</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap-theme.min.css}" rel="stylesheet">
+    <link th:href="@{/css/theme.css}" rel="stylesheet">
+    <style>
+      .myfooter {
+        position:fixed;
+        bottom:5px;
+        left: 40%;
+        color: #999;
+      }
+    </style>
+  </head>
+
+  <body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container" role="main">
+      <div class="navbar-header">
+        <a class="navbar-brand" th:href="@{/index}">Pinter</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a th:href="@{/doc}">接口文档</a></li>
+
+        </ul>
+      </div><!--/.navbar-collapse -->
+    </div> <!-- /container -->
+  </nav>
+
+    <div class="container theme-showcase" role="main">
+
+      <div class="jumbotron">
+        <h2>文件下载要点</h2>
+          <p>
+              1、文件下载的原理是服务器将文件内容通过HTTP发送到浏览器，浏览器接收到数据后在本地创建一个文件<br/>
+              2、创建文件是浏览器的自身行为，测试文件下载不需要在本地创建文件<br/>
+              3、文件下载是一个普通的HTTP GET类型请求
+          </p>
+      </div>
+
+
+    <div class="page-header">
+        <h2>我的文件</h2>
+      </div>
+      <div class="row">
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>文件名称</th>
+                <th>文件大小（KB）</th>
+                <th>上传时间</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="myFile : ${myFileList}">
+                　　<td th:text="${myFile.id}"></td>
+                　　<td th:text="${myFile.fileName}"></td>
+                　　<td th:text="${myFile.size}"></td>
+                　　<td th:text="${myFile.uploadTime}"></td>
+                    <td><a class="btn btn-sm btn-success" th:href="@{/file/api/download(id=${myFile.id})}">下载</a></td>
+            </tr>
+
+            </tbody>
+          </table>
+      </div>
+
+        <!--<div class="myfooter">-->
+            <!--<p th:utext="${desc}"></p>-->
+        <!--</div>-->
+        <hr/>
+      <footer>
+        <p th:utext="${desc}"></p>
+      </footer>
+
+    </div> <!-- /container -->
+
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/docs.min.js}"></script>
+  </body>
+</html>

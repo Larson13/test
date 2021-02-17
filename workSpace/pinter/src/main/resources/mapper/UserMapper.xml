@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.perf.beihe.pinter.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="cn.com.perf.beihe.pinter.mode.User">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+        <result column="gender" jdbcType="INTEGER" property="gender" />
+        <result column="phone_num" jdbcType="VARCHAR" property="phoneNum" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="address" jdbcType="VARCHAR" property="address" />
+        <result column="createTime" jdbcType="TIMESTAMP" property="create_time" />
+        <result column="updateTime" jdbcType="TIMESTAMP" property="update_time" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, user_name, password, age, gender, phone_num, email, address, create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+
+    <select id="selectByUserName"  resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from user
+        where user_name = #{userName,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByUserNameAndEmail" parameterType="cn.com.perf.beihe.pinter.mode.User" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from user
+        where user_name = #{userName,jdbcType=VARCHAR} and email = #{email,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from user
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="cn.com.perf.beihe.pinter.mode.User">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into user (user_name, password, age, gender, phone_num, email, address, create_time, update_time)
+        values (#{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+        #{age,jdbcType=INTEGER}, #{gender,jdbcType=INTEGER}, #{phoneNum,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+        #{address,jdbcType=VARCHAR}, now(),now())
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="cn.com.perf.beihe.pinter.mode.User">
+        update user
+        set user_name = #{userName,jdbcType=VARCHAR},
+            password = #{password,jdbcType=VARCHAR},
+            age = #{age,jdbcType=INTEGER},
+            gender = #{gender,jdbcType=INTEGER},
+            phone_num = #{phoneNum,jdbcType=VARCHAR},
+            email = #{email,jdbcType=VARCHAR},
+            address = #{address,jdbcType=VARCHAR},
+            update_time = now()
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

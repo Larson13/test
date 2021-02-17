@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        html body {
+            background-color: #333;
+            color: #fff
+        }
+
+        .myfooter {
+            position:relative;
+            bottom:30px;
+            left: 40%;
+            color: #999;
+        }
+    </style>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container-fluid">
+
+
+    <form class="form-horizontal" method="post" onsubmit="return false" style="margin-top: 15%">
+        <h3 style="text-align: center;margin:50px">瑞士银行登录系统</h3>
+        <div class="form-group">
+            <label for="userName" class="col-md-5 control-label">
+                用户名
+            </label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" id="userName"
+                       name="loginName" placeholder="请输入用户名" style="width: 35%">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-md-5 control-label">
+                密码
+            </label>
+            <div class="col-md-7">
+                <input type="password" class="form-control" id="password"
+                       name="password" placeholder="请输入密码" style="width: 35%">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-5 col-md-7">
+                <button type="submit" class="btn btn-success" style="width: 35%" onclick="login.module.login(0)">
+                    登录
+                </button>
+            </div>
+        </div>
+    </form>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <div class="myfooter">
+        <p th:utext="${desc}"></p>
+    </div>
+    <!--<footer>-->
+        <!--<p th:utext="${desc}"></p>-->
+    <!--</footer>-->
+</div>
+
+</body>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/login.js}"></script>
+</html>

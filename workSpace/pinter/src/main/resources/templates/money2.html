@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My money</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/cover.css}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand" id="welcomeText"></h3>
+                <nav>
+                  <ul class="nav masthead-nav">
+                    <li><a th:href="@{/index}">Pinter</a></li>
+                    <li class="active" id="myHome"><a href="#">MyHome</a></li>
+                    <li><a href="http://www.baidu.cn">Contact</a></li>
+                </ul>
+                </nav>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1 class="cover-heading" id="moneyNum"></h1>
+              <br/>
+              <p class="lead">
+                  <a class="btn btn-lg btn-success" onclick="money.module.logout()">安全退出</a>
+              </p>
+            <input hidden="hidden" type="text" th:value="${token}" id="token">
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+                <p th:utext="${desc}"></p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/commonUtils.js}"></script>
+    <script th:src="@{/js/money.js}"></script>
+  </body>
+</html>

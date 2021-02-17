@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ui  v-for="(add,i) in addrs">
+        <li>
+        第{{i}},{{add}}
+        </li>
+    </ui>
+
+    <ul>
+        <li v-for="(user,i) in users">
+            编号:{{i}},姓名:{{user.name}},年龄:{{user.age}},职业:{{user.role}}
+
+        </li>
+    </ul>
+</div>
+</body>
+<script src="node_modules\vue\dist\vue.js"></script>
+<script>
+
+    new Vue({
+        el:"#app",
+        data(){
+            return {
+                username:"",
+                url:"https://www.baidu.com",
+                count:3,
+                addrs:["北京","上海","西安"],
+                users:[
+                    {"name":"张三","age":31,"role":"法师"},
+                    {"name":"李四","age":30,"role":"射手"},
+                    {"name":"王五","age":23,"role":"打野"},
+                    {"name":"赵六","age":23,"role":"上单"}
+                ]
+            }
+        },
+        methods:{
+            show(){
+                alert("我被点了...");
+            }
+        },
+        created() {
+            console.log("创建后");
+        },
+        mounted() {
+            console.log("挂载完");
+        }
+    });
+
+</script>
+</html>

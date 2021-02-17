@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<script src="stomp.min.js"></script>
+</head>
+<script>
+      var ws = new WebSocket('ws://10.1.14.194 :15674/ws');
+      var client = Stomp.over(ws);
+
+      client.debug = function(e) {
+        $('#second div').append($("<code>").text(e));
+      };
+
+      // default receive callback to get message from temporary queues
+      client.onreceive = function(m) {
+        $('#first div').append($("<code>").text(m.body));
+      }
+
+      var on_connect = function(x) {
+          id = client.subscribe("/exchange/sendToUser", function(m) {
+            // reply by sending the reversed text to the temp queue defined in the "reply-to" header
+            var reversedText = m.body.split("").reverse().join("");
+            client.send(m.headers['reply-to'], {"content-type":"text/plain"}, reversedText);
+          });
+      };
+      var on_error =  function() {
+        console.log('error');
+      };
+      client.connect('guest', 'guest', on_connect, on_error, '/');
+
+      $('#first form').submit(function() {
+        var text = $('#first form input').val();
+        if (text) {
+          client.send('/exchange/sendToUser', {'reply-to': '/temp-queue/foo'}, text);
+            $('#first form input').val("");
+          }
+          return false;
+      });
+    </script>
+<body>
+
+</body>
+</html>

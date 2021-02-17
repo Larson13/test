@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pinter</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/jumbotron.css}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Pinter</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a th:href="@{/doc}">接口文档</a></li>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Hello, Pinter</h1>
+        <p>性能课程全新的接口项目，包含更多激动人心的新特性，提供了超过20多个HTTP接口，覆盖了各种常见的接口、参数类型，以及存在各种性能问题的接口，帮助大家进行接口性能测试的学习。另外项目内还包含了模拟cookie、token方式进行权限校验的银行系统，此外还有上传、下载等功能模块。点击对应按钮，现在赶紧开始学习吧！</p>
+        <p><a class="btn btn-primary btn-lg" th:href="@{/doc}" role="button">查看接口文档</a></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Cookie练习案例</h2>
+          <p>基于cookie方式验证的瑞士银行系统，包含登录、余额查询接口。帮助学习接口校验方式</p>
+          <p><a class="btn btn-success" th:href="@{/bank/page/login}" role="button">开始练习</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Token练习案例</h2>
+          <p>基于token方式验证的瑞士银行系统，包含登录、余额查询接口。帮助学习接口校验方式</p>
+          <p><a class="btn btn-success" th:href="@{/bank/page/login2}" role="button">开始练习</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>文件上传下载案例</h2>
+          <p>提供了企业内常见的表单上传、ajax上传两种方式，以及文件下载操作。帮助学习文件上传和下载接口的脚本编写</p>
+          <p><a class="btn btn-success" th:href="@{/file/page/upload}" role="button">开始练习</a></p>
+        </div>
+      </div>
+
+
+      <hr>
+
+      <footer>
+        <p th:utext="${desc}"></p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+  </body>
+</html>

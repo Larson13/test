@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>pinter</title>
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <link th:href="@{/css/jumbotron.css}" rel="stylesheet">
+    <link th:href="@{/css/theme.css}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" th:href="@{/index}">Pinter</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li><a th:href="@{/doc}">接口文档</a></li>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <div class="container theme-showcase">
+        <div class="page-header">
+            <h3>通用练习接口</h3>
+        </div>
+        <div class="row">
+
+            <table class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <!--<th>#</th>-->
+                    <th>接口名称</th>
+                    <th>接口类型</th>
+                    <th>URL</th>
+                    <th>参数</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td>普通的GET类型接口</td>
+                    <td>GET</td>
+                    <td>/pinter/com/getSku</td>
+                    <td>id=1</td>
+                </tr>
+
+                <tr>
+                    <td>参数为k=v的POST接口</td>
+                    <td>POST</td>
+                    <td>/pinter/com/login</td>
+                    <td>userName=admin&password=1234</td>
+                </tr>
+
+                <tr>
+                    <td>参数为json的POST接口</td>
+                    <td>POST</td>
+                    <td>/pinter/com/register</td>
+                    <td>
+                        {"userName":"test","password":"1234","gender":1,"phoneNum":"110","email":"beihe@163.com","address":"Beijing"}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>参数为k=json的POST接口</td>
+                    <td>POST</td>
+                    <td>/pinter/com/buy</td>
+                    <td>param={"skuId":123,"num":10}</td>
+                </tr>
+
+                <tr>
+                    <td>需要签名验证的POST接口</td>
+                    <td>POST</td>
+                    <td>/pinter/com/userInfo</td>
+                    <td>{"phoneNum":"123434","optCode":"testfan","timestamp":"12112121212","sign":"fdsfdsaafsasfas"}</td>
+                </tr>
+
+                <tr>
+                    <td>返回json数组的GET接口</td>
+                    <td>GET</td>
+                    <td>/pinter/com/userList</td>
+                    <td>genderType=0</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="page-header">
+            <h3>上传下载案例接口</h3>
+        </div>
+        <div class="row">
+
+            <table class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <!--<th>#</th>-->
+                    <th>接口名称</th>
+                    <th>接口类型</th>
+                    <th>URL</th>
+                    <th>参数</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td>表单上传接口</td>
+                    <td>POST</td>
+                    <td>/pinter/file/api/upload</td>
+                    <td>文件类型</td>
+                </tr>
+
+                <tr>
+                    <td>Ajax上传接口</td>
+                    <td>POST</td>
+                    <td>/pinter/file/api/upload2</td>
+                    <td>文件类型</td>
+                </tr>
+
+                <tr>
+                    <td>文件下载接口</td>
+                    <td>GET</td>
+                    <td>/pinter/file/api/download</td>
+                    <td>id=1</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="page-header">
+            <h3>Cookie&Token案例接口</h3>
+        </div>
+        <div class="row">
+
+            <table class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <!--<th>#</th>-->
+                    <th>接口名称</th>
+                    <th>接口类型</th>
+                    <th>URL</th>
+                    <th>参数</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td>银行登录接口（cookie）</td>
+                    <td>POST</td>
+                    <td>/pinter/bank/api/login</td>
+                    <td>userName=admin&password=1234</td>
+                </tr>
+
+                <tr>
+                    <td>银行登录接口2（token）</td>
+                    <td>POST</td>
+                    <td>/pinter/bank/api/login2</td>
+                    <td>userName=admin&password=1234</td>
+                </tr>
+
+                <tr>
+                    <td>银行余额查询接口（cookie）</td>
+                    <td>GET</td>
+                    <td>/pinter/bank/api/query</td>
+                    <td>userName=admin</td>
+                </tr>
+
+                <tr>
+                    <td>银行余额查询接口（token）</td>
+                    <td>GET</td>
+                    <td>/pinter/bank/api/query2</td>
+                    <td>userName=admin</td>
+                </tr>
+
+                <tr>
+                    <td>银行账户注销接口</td>
+                    <td>GET</td>
+                    <td>/pinter/bank/api/logout</td>
+                    <td>userName=admin</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="page-header">
+            <h3>环境整合接口</h3>
+        </div>
+        <div class="row">
+
+            <table class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <!--<th>#</th>-->
+                    <th>接口名称</th>
+                    <th>接口类型</th>
+                    <th>URL</th>
+                    <th>参数</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td>环境整合接口</td>
+                    <td>GET</td>
+                    <td>/pinter/env/search</td>
+                    <td>id=1</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="page-header">
+            <h3>性能案例接口</h3>
+        </div>
+        <div class="row">
+
+            <table class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <!--<th>#</th>-->
+                    <th>接口名称</th>
+                    <th>接口类型</th>
+                    <th>URL</th>
+                    <th>参数</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td>案例接口一</td>
+                    <td>GET</td>
+                    <td>/pinter/case/block</td>
+                    <td>id=1</td>
+                </tr>
+
+                <tr>
+                    <td>案例接口二</td>
+                    <td>GET</td>
+                    <td>/pinter/case/dead</td>
+                    <td>无</td>
+                </tr>
+
+                <tr>
+                    <td>案例接口三</td>
+                    <td>GET</td>
+                    <td>/pinter/case/cpu</td>
+                    <td>type=1或2</td>
+                </tr>
+
+                <tr>
+                    <td>案例接口四</td>
+                    <td>GET</td>
+                    <td>/pinter/case/time</td>
+                    <td>id=1</td>
+                </tr>
+
+                <tr>
+                    <td>案例接口五</td>
+                    <td>GET</td>
+                    <td>/pinter/case/slow</td>
+                    <td>userName=xxx[&email=yyy]</td>
+                </tr>
+
+                <tr>
+                    <td>案例接口六</td>
+                    <td>GET</td>
+                    <td>/pinter/case/memory</td>
+                    <td>userName=admin&password=1234</td>
+                </tr>
+
+                <tr>
+                    <td>案例接口七</td>
+                    <td>POST</td>
+                    <td>/pinter/case/pay</td>
+                    <td>{"orderId":10001,"payUserId":1234,"amount":11.2,"orderType":1,"payType":2,"discount":11.1}</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+      <hr>
+
+      <footer>
+        <p th:utext="${desc}"></p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+  </body>
+</html>
